@@ -31,6 +31,16 @@ function createBot() {
        logger.info(`<${username}> ${message}`);
 
     });
+
+    bot.on('kicked', (reason) => {
+        let reasonText = JSON.parse(reason).text;
+        if(reasonText === '') {
+           reasonText = JSON.parse(reason).extra[0].text
+        }
+        reasonText = reasonText.replace(/§./g, '');
+  
+        logger.warn(`Bot was kicked from the server. Reason: ${reasonText}`)
+    })
 }
 
 createBot();
