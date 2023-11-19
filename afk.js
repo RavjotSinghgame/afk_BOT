@@ -16,7 +16,10 @@ function createBot() {
 
         setInterval(() => {
             bot.chat(`/spawn`);
-            bot.chat(`/f warp afk`)            
+            setTimout(() => {
+                bot.chat(`/f warp afk`) 
+            }, 4000);
+               
         }, 1800 * 1000);
 
         setInterval(() => {
